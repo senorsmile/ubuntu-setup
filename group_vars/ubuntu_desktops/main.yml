@@ -9,8 +9,17 @@ apt_packages:
   - htop
   - vim
   - nmap
+  - wget
+  - curl
+  - tmux
 
   ## gui
   - vim-gtk3 # provides gvim
   - chromium-browser
   - awesome
+  - anki
+  - mplayer # for anki
+
+  ## ipsec / l2tp vpn
+  - strongswan
+  - xl2tpd  
