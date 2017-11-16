@@ -1,0 +1,3 @@
+[submodule "external/ansible-runner-scripts"]
+	path = external/ansible-runner-scripts
+	url = git@github.com:mtnsat/ansible-runner-scripts.git
