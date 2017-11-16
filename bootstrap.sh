@@ -15,4 +15,4 @@ packages=(
 
 sudo apt-get install "${packages[@]}"
 
-pip install ansible
+sudo pip install ansible
