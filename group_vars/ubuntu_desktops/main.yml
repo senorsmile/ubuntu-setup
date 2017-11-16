@@ -1,9 +1,16 @@
 ---
+pip_become: False
+
 pip_packages:
   - ansible
 
 apt_packages:
+  ## cli
   - htop
   - vim
+  - nmap
+
+  ## gui
+  - vim-gtk3 # provides gvim
   - chromium-browser
   - awesome
