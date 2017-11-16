@@ -1,0 +1,9 @@
+---
+pip_packages:
+  - ansible
+
+apt_packages:
+  - htop
+  - vim
+  - chromium-browser
+  - awesome
