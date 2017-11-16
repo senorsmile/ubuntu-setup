@@ -1,0 +1,6 @@
+
+---
+ubuntu_desktops:
+  hosts:
+    localhost:
+      ansible_connection: local
