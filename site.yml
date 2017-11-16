@@ -1,0 +1,4 @@
+- hosts: ubuntu-desktops
+  roles:
+    - role: apt
+      tags: apt
