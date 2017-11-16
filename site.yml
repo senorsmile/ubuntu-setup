@@ -1,4 +1,8 @@
-- hosts: ubuntu-desktops
+- hosts: ubuntu_desktops
+  become: True
   roles:
     - role: apt
       tags: apt
+
+    - role: pip
+      tags: pip
