@@ -27,10 +27,18 @@
     name: pip
     state: latest
 
-- name: Pip install packages
+- name: Pip remove desired packages
+  pip:
+    name: "{{ item }}"
+    state: absent
+    extra_args: '--no-cache-dir'
+  with_items: "{{ pip_packages_remove }}"
+  become: "{{ pip_become | default(true) }}"
+
+- name: Pip install desired packages
   pip:
     name: "{{ item }}"
     state: present
     extra_args: '--no-cache-dir'
+  with_items: "{{ pip_packages }}"
   become: "{{ pip_become | default(true) }}"
-with_items: "{{ pip_packages }}"
