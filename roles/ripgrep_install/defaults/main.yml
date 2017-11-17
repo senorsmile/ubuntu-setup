@@ -1,0 +1,5 @@
+---
+ripgrep_ver: '0.7.1'
+ripgrep:
+  url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_ver }}/ripgrep-{{ ripgrep_ver }}-x86_64-unknown-linux-musl.tar.gz"
+  dir: "ripgrep-{{ ripgrep_ver }}-x86_64-unknown-linux-musl"

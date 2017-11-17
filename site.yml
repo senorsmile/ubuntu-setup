@@ -6,3 +6,9 @@
 
     - role: pip
       tags: pip
+
+    - role: ripgrep_install
+      tags:
+        - rg
+        - ripgrep
+        - ripgrep_install
