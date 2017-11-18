@@ -12,3 +12,6 @@
         - rg
         - ripgrep
         - ripgrep_install
+
+    - role: senorsmile.ansible-seafile-client
+      tags: seafile

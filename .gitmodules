@@ -1,3 +1,6 @@
 [submodule "external/ansible-runner-scripts"]
 	path = external/ansible-runner-scripts
 	url = git@github.com:mtnsat/ansible-runner-scripts.git
+[submodule "roles/senorsmile.ansible-seafile-client"]
+	path = roles/senorsmile.ansible-seafile-client
+	url = git@github.com:senorsmile/ansible-seafile-client-install.git
