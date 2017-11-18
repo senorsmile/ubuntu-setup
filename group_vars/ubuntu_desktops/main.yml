@@ -3,6 +3,7 @@ pip_become: False
 
 pip_packages:
   - ansible
+  - glances
 
 apt_packages:
   ## cli
@@ -12,11 +13,18 @@ apt_packages:
   - wget
   - curl
   - tmux
+  - openssh-server
+  - sshpass
+  - jq # cli json query
+  - build-essential
+  - python-dev
 
   ## gui
   - vim-gtk3 # provides gvim
   - chromium-browser
   - awesome
+  - xbacklight # for brightness adjustment in awesome
+  - acpi # for battery stats in awesome
   - anki
   - mplayer # for anki
 
