@@ -22,9 +22,16 @@ apt_packages:
   ## gui
   - vim-gtk3 # provides gvim
   - chromium-browser
+
+  ## awesome
   - awesome
   - xbacklight # for brightness adjustment in awesome
   - acpi # for battery stats in awesome
+  - xscreensaver
+  - arandr # gui for xrandr
+  #- pasystray # alternate pulse based volume applet
+
+  # misc gui
   - anki
   - mplayer # for anki
 
