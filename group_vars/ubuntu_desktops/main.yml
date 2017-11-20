@@ -25,11 +25,14 @@ apt_packages:
 
   ## awesome
   - awesome
+  - awesome-extra
   - xbacklight # for brightness adjustment in awesome
   - acpi # for battery stats in awesome
   - xscreensaver
+  - xscreensaver-data-extra
   - arandr # gui for xrandr
   #- pasystray # alternate pulse based volume applet
+  - xfce4
 
   # misc gui
   - anki
