@@ -7,3 +7,6 @@
 [submodule "roles/jdauphant.atom"]
 	path = roles/jdauphant.atom
 	url = https://github.com/jdauphant/ansible-role-atom.git
+[submodule "roles/senorsmile.ipsec_l2tp"]
+	path = roles/senorsmile.ipsec_l2tp
+	url = git@github.com:senorsmile/ansible-role-ipsec_l2tp.git

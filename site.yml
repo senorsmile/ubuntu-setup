@@ -15,3 +15,13 @@
 
     - role: senorsmile.ansible-seafile-client
       tags: seafile
+
+    - role: senorsmile.ipsec_l2tp
+      tags:
+        - vpn
+        - ipsec
+        - l2tp
+        - ipsec_l2tp
+    
+    - role: jdauphant.atom
+      tags: atom

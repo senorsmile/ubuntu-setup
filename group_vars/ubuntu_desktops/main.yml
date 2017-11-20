@@ -37,7 +37,3 @@ apt_packages:
   # misc gui
   - anki
   - mplayer # for anki
-
-  ## ipsec / l2tp vpn
-  - strongswan
-  - xl2tpd  
