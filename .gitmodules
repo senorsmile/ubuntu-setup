@@ -10,3 +10,9 @@
 [submodule "roles/senorsmile.ipsec_l2tp"]
 	path = roles/senorsmile.ipsec_l2tp
 	url = git@github.com:senorsmile/ansible-role-ipsec_l2tp.git
+[submodule "roles/hubisan.virtualbox"]
+	path = roles/hubisan.virtualbox
+	url = https://github.com/hubisan/ansible-virtualbox.git
+[submodule "roles/senorsmile.hubisan.virtualbox"]
+	path = roles/senorsmile.hubisan.virtualbox
+	url = git@github.com:senorsmile/ansible-virtualbox.git

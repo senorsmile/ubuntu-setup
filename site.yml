@@ -25,3 +25,9 @@
     
     - role: jdauphant.atom
       tags: atom
+
+    - role: senorsmile.hubisan.virtualbox
+      virtualbox_version: '5.1'
+      tags:
+        - vbox
+        - virtualbox
