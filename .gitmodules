@@ -4,3 +4,6 @@
 [submodule "roles/senorsmile.ansible-seafile-client"]
 	path = roles/senorsmile.ansible-seafile-client
 	url = git@github.com:senorsmile/ansible-seafile-client-install.git
+[submodule "roles/jdauphant.atom"]
+	path = roles/jdauphant.atom
+	url = https://github.com/jdauphant/ansible-role-atom.git
