@@ -31,3 +31,6 @@
       tags:
         - vbox
         - virtualbox
+
+    - role: jdauphant.vagrant
+      tags: vagrant

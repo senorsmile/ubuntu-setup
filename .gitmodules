@@ -16,3 +16,6 @@
 [submodule "roles/senorsmile.hubisan.virtualbox"]
 	path = roles/senorsmile.hubisan.virtualbox
 	url = git@github.com:senorsmile/ansible-virtualbox.git
+[submodule "roles/jdauphant.vagrant"]
+	path = roles/jdauphant.vagrant
+	url = https://github.com/jdauphant/ansible-role-vagrant.git
