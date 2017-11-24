@@ -4,6 +4,9 @@
     - role: apt
       tags: apt
 
+    - role: xfce
+      tags: xfce
+
     - role: pip
       tags: pip
 
