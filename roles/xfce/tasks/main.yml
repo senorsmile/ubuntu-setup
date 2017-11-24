@@ -1,0 +1,60 @@
+---
+- include_role: 
+    name: apt
+  vars:
+    apt_packages:
+      - xfce4
+      - xfce4-goodies
+  tags: apt
+
+
+#------------------
+# enable suspend for users
+#------------------
+- name: Check for inactivity-sleep-mode-on-battery
+  become: False
+  shell: >
+    xfconf-query \
+      -c xfce4-power-manager \
+      -lv \
+      | grep '/xfce4-power-manager/inactivity-sleep-mode-on-battery.*1'
+  register: inactivity_status
+  changed_when: False
+  ignore_errors: True
+
+- name: Set inactivity-sleep-mode-on-battery if needed
+  become: False
+  shell: >
+    xfconf-query \
+      -c xfce4-power-manager \
+      -p /xfce4-power-manager/inactivity-sleep-mode-on-battery \
+      -n \
+      -t int \
+      -s 1
+  when: ( inactivity_status | failed )
+
+
+#------------------
+# set suspend timer
+#------------------
+- name: Check for inactivity-on-battery timer
+  shell: >
+    xfconf-query \
+      -c xfce4-power-manager \
+      -lv \
+      | grep '/xfce4-power-manager/inactivity-on-battery.*{{ xfce_suspend_battery_time }}'
+  register: suspend_battery_status
+  changed_when: False
+  ignore_errors: True
+  become: False
+
+- name: Set invactivity-on-battery timer if needed
+  become: False
+  shell: >
+    xfconf-query \
+      -c xfce4-power-manager \
+      -p /xfce4-power-manager/inactivity-on-battery \
+      -n \
+      -t int \
+      -s {{ xfce_suspend_battery_time }}
+  when: ( suspend_battery_status | failed )
