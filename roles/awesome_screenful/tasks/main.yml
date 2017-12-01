@@ -1,0 +1,31 @@
+---
+## https://github.com/dluksza/screenful/
+- name: Copy Screen detect rules
+  copy:
+    src: repo/98-screen-detect.rules
+    dest: /etc/udev/rules.d/98-screen-detect.rules
+  register: detect_rules
+
+- name: Reload rules if needed
+  shell: udevadm control --reload-rules
+  when: ( detect_rules | changed )
+
+- name: notify-aweome to /lib/udev
+  copy:
+    src: repo/notify-awesome
+    dest: /lib/udev/
+    mode: '0755'
+
+- name: Get user home dir
+  become: False
+  setup:
+
+- name: Copy awesome config files
+  become: False
+  copy:
+    src: "repo/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/awesome/"
+    force: False
+  with_items:
+    - screenful.lua
+    - screens_db.lua

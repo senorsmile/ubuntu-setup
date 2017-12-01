@@ -4,6 +4,7 @@ pip_become: False
 pip_packages:
   - ansible
   - glances
+  - batinfo # for battery info in glances
 
 apt_packages:
   ## cli
@@ -18,10 +19,17 @@ apt_packages:
   - jq # cli json query
   - build-essential
   - python-dev
+  - unrar
+
+  ## thinkpad
+  - tp-smapi-dkms
 
   ## gui
   - vim-gtk3 # provides gvim
   - chromium-browser
+  - gparted
+  - redshift
+  - redshift-gtk
 
   ## awesome
   - awesome
@@ -31,7 +39,13 @@ apt_packages:
   - xscreensaver
   - xscreensaver-data-extra
   - arandr # gui for xrandr
+  - caja # file manager from mate
 
   # misc gui
   - anki
   - mplayer # for anki
+
+  - fonts-ancient-scripts
+  - font-manager
+
+  - numlockx

@@ -19,3 +19,9 @@
 [submodule "roles/jdauphant.vagrant"]
 	path = roles/jdauphant.vagrant
 	url = https://github.com/jdauphant/ansible-role-vagrant.git
+[submodule "roles/awesome_screenful/files/repo"]
+	path = roles/awesome_screenful/files/repo
+	url = git@github.com:dluksza/screenful.git
+[submodule "roles/oefenweb.packer_io"]
+	path = roles/oefenweb.packer_io
+	url = git@github.com:Oefenweb/ansible-packer-io.git
