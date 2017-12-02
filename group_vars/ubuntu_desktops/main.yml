@@ -49,3 +49,7 @@ apt_packages:
   - font-manager
 
   - numlockx
+  - youtube-dl
+
+  # games
+  - steam
