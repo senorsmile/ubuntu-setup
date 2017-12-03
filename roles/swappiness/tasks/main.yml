@@ -1,0 +1,7 @@
+---
+- name: Update swappiness setting in sysctl.conf if needed
+  sysctl:
+    name: vm.swappiness
+    value: "{{ swappiness }}"
+    state: present
+    reload: True

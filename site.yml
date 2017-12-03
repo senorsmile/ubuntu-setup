@@ -43,3 +43,8 @@
 
     - role: oefenweb.packer_io
       tags: packer
+
+    - role: swappiness
+      tags:
+        - swap
+        - swappiness
