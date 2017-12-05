@@ -38,7 +38,9 @@
         - vbox
         - virtualbox
 
-    - role: jdauphant.vagrant
+    - role: senorsmile.jdauphant.vagrant
+      vagrant_virtualbox_install: False
+      #vagrant_virtualbox_ver: "virtualbox-5.2"
       tags: vagrant
 
     - role: oefenweb.packer_io

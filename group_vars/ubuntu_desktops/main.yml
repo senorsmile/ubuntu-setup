@@ -20,6 +20,7 @@ apt_packages:
   - build-essential
   - python-dev
   - unrar
+  - python-netaddr
 
   ## thinkpad
   - tp-smapi-dkms

@@ -25,3 +25,6 @@
 [submodule "roles/oefenweb.packer_io"]
 	path = roles/oefenweb.packer_io
 	url = git@github.com:Oefenweb/ansible-packer-io.git
+[submodule "roles/senorsmile.jdauphant.vagrant"]
+	path = roles/senorsmile.jdauphant.vagrant
+	url = git@github.com:senorsmile/ansible-role-vagrant.git
