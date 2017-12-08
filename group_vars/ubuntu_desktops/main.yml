@@ -1,56 +1,24 @@
 ---
+## real values are not here but in inventory
+## sample values here for readers
+
+
+xfce_suspend_battery_time: 3
+xfce_show_tray_icon: 1
+
+swappiness: "8"
+
+vagrant_version: "2.0.1"
+
 pip_become: False
 
 pip_packages:
   - ansible
   - glances
-  - batinfo # for battery info in glances
 
 apt_packages:
   ## cli
   - htop
   - vim
-  - nmap
-  - wget
-  - curl
-  - tmux
-  - openssh-server
-  - sshpass
-  - jq # cli json query
-  - build-essential
-  - python-dev
-  - unrar
-  - python-netaddr
 
-  ## thinkpad
-  - tp-smapi-dkms
 
-  ## gui
-  - vim-gtk3 # provides gvim
-  - chromium-browser
-  - gparted
-  - redshift
-  - redshift-gtk
-
-  ## awesome
-  - awesome
-  - awesome-extra
-  - xbacklight # for brightness adjustment in awesome
-  - acpi # for battery stats in awesome
-  - xscreensaver
-  - xscreensaver-data-extra
-  - arandr # gui for xrandr
-  - caja # file manager from mate
-
-  # misc gui
-  - anki
-  - mplayer # for anki
-
-  - fonts-ancient-scripts
-  - font-manager
-
-  - numlockx
-  - youtube-dl
-
-  # games
-  - steam
