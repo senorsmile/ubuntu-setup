@@ -28,3 +28,6 @@
 [submodule "roles/senorsmile.jdauphant.vagrant"]
 	path = roles/senorsmile.jdauphant.vagrant
 	url = git@github.com:senorsmile/ansible-role-vagrant.git
+[submodule "senorsmile.geerlingguy.docker"]
+	path = senorsmile.geerlingguy.docker
+	url = git@github.com:senorsmile/ansible-role-docker.git
