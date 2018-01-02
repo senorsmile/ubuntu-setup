@@ -1,0 +1,40 @@
+---
+- name: Install xmonad
+  include_role:
+    name: apt
+  vars:
+    apt_packages:
+      - xmonad
+
+- name: Install xmonad accessories
+  include_role:
+    name: apt
+  vars:
+    apt_packages:
+      - suckless-tools # for xmonad?
+      - xmobar # for xmonad
+      - stalonetray
+
+- name: Create ~/.xmonad/ dir
+  become: False
+  file:
+    path: ~/.xmonad/
+    state: directory
+
+- name: Sync xmonad.hs configuration
+  become: False
+  template:
+    src: xmonad.hs
+    dest: ~/.xmonad/xmonad.hs
+
+- name: Sync ~/.xsessionrc for xmonad
+  become: False
+  template:
+    src: xsessionrc
+    dest: ~/.xsessionrc
+
+- name: Sync ~./xmobarrc
+  become: False
+  template:
+    src: xmobarrc
+    dest: ~/.xmobarrc
