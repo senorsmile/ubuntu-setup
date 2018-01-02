@@ -1,3 +1,4 @@
 ---
 installer_filename: projectlibre_1.7.0-1.deb
 download_url: 'https://downloads.sourceforge.net/project/projectlibre/ProjectLibre/1.7/{{ installer_filename }}?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fprojectlibre%2Ffiles%2FProjectLibre%2F1.7%2F&ts=1514928252&use_mirror=gigenet'
+file_sha256: '6fdd79842984659bb7531264f47f50567fb947483293b4d48dda68c81f2c4b8c'

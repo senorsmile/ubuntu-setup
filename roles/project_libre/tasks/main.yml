@@ -11,7 +11,7 @@
     url: "{{ download_url }}"
     #dest: "./tmp/{{ installer_filename }}"
     dest: "./tmp/"
-    checksum: 'sha256:6fdd79842984659bb7531264f47f50567fb947483293b4d48dda68c81f2c4b8c'
+    checksum: "{{ file_sha256 }}"
 
 - name: Verify gdebi is installed (for local dep resolution)
   include_role:
