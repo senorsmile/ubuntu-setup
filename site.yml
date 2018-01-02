@@ -55,3 +55,8 @@
     
     #- role: xmonad
     #  tags: xmonad
+
+    - role: project_libre
+      tags:
+        - project_libre
+        - proj

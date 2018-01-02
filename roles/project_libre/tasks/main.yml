@@ -1,0 +1,35 @@
+---
+- name: Create tmp dir
+  become: False
+  file:
+    path: ./tmp/
+    state: directory
+
+- name: Download deb
+  become: False 
+  get_url:
+    url: "{{ download_url }}"
+    #dest: "./tmp/{{ installer_filename }}"
+    dest: "./tmp/"
+    checksum: 'sha256:6fdd79842984659bb7531264f47f50567fb947483293b4d48dda68c81f2c4b8c'
+
+- name: Verify gdebi is installed (for local dep resolution)
+  include_role:
+    name: apt
+  vars:
+    apt_packages:
+      - gdebi
+
+- name: Install deb using gdebi
+  shell: |
+    if dpkg -l | grep -q projectlibre 2>/dev/null; then
+      echo "OK"
+    else
+      echo "CHANGED"
+      gdebi "./tmp/{{ installer_filename }}" --non-interactive
+    fi
+  args:
+    executable: /bin/bash
+  register: gdebi_install
+  changed_when: ( "CHANGED" in gdebi_install.stdout )
+  
