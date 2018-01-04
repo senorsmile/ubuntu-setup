@@ -9,8 +9,8 @@
   become: False 
   get_url:
     url: "{{ download_url }}"
-    #dest: "./tmp/{{ installer_filename }}"
-    dest: "./tmp/"
+    dest: "./tmp/{{ installer_filename }}"
+    #dest: "./tmp/"
     checksum: "{{ file_sha256 }}"
 
 - name: Verify gdebi is installed (for local dep resolution)
