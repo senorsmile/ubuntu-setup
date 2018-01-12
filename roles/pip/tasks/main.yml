@@ -22,6 +22,11 @@
   easy_install:
     name: pip
 
+- name: pip upgrade easy_install
+  pip:
+    name: setuptools
+    state: latest
+
 - name: Pip upgrade pip
   pip:
     name: pip
@@ -31,14 +36,14 @@
   pip:
     name: "{{ item }}"
     state: absent
-    extra_args: '--no-cache-dir'
+    extra_args: '--no-cache-dir{% if not pip_become %} --user{% endif %}'
   with_items: "{{ pip_packages_remove }}"
-  become: "{{ pip_become | default(true) }}"
+  become: "{{ pip_become }}"
 
-- name: Pip install desired packages
+- name: Pip install packages
   pip:
     name: "{{ item }}"
     state: present
-    extra_args: '--no-cache-dir'
+    extra_args: '--no-cache-dir{% if not pip_become %} --user{% endif %}'
   with_items: "{{ pip_packages }}"
-  become: "{{ pip_become | default(true) }}"
+  become: "{{ pip_become }}"
