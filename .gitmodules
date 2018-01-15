@@ -31,3 +31,6 @@
 [submodule "senorsmile.geerlingguy.docker"]
 	path = senorsmile.geerlingguy.docker
 	url = git@github.com:senorsmile/ansible-role-docker.git
+[submodule "roles/cmprescott.google-chrome"]
+	path = roles/cmprescott.google-chrome
+	url = https://github.com/cmprescott/ansible-role-chrome.git

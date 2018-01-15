@@ -5,7 +5,10 @@
       tags: apt
 
     - role: xfce
-      tags: xfce
+      tags: 
+        - xfce
+        - gui
+      
 
     - role: pip
       tags: pip
@@ -60,3 +63,11 @@
       tags:
         - project_libre
         - proj
+        - gui
+
+    - role: cmprescott.google-chrome
+      tags:
+        - cmprescott
+        - google-chrome
+        - chrome
+        - gui
