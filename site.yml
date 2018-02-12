@@ -77,3 +77,8 @@
         - google-chrome
         - chrome
         - gui
+
+    - role: Oefenweb.ansible-hipchat
+      tags:
+        - hipchat
+

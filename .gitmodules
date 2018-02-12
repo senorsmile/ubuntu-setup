@@ -34,3 +34,6 @@
 [submodule "roles/cmprescott.google-chrome"]
 	path = roles/cmprescott.google-chrome
 	url = https://github.com/cmprescott/ansible-role-chrome.git
+[submodule "roles/Oefenweb.ansible-hipchat"]
+	path = roles/Oefenweb.ansible-hipchat
+	url = git@github.com:Oefenweb/ansible-hipchat.git
