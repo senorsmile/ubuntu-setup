@@ -1,0 +1,4 @@
+---
+- name: FAIL | Unsupported OS
+  fail:
+    msg: "You're trying to use this role on an untested OS.  See main.yml code for list of supported OS's."

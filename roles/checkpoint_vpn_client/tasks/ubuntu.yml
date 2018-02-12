@@ -1,0 +1,18 @@
+---
+- name: Install lib deps
+  include_role:
+    name: apt
+  vars:
+    apt_packages:
+      - libpam0g:i386
+      - libx11-6:i386
+      - libstdc++6:i386
+      - libstdc++5:i386
+
+- name: Download installer
+  get_url:
+    force: no
+    url: https://usvpn.row44.com/CSHELL/snx_install.sh
+    dest: /root/snx_install.sh
+    checksum: 'sha256:9ab2420b1b7fc8d1fd18af704265668b9f385f70ecbfdb04a672be7251f08953'
+    mode: 0755

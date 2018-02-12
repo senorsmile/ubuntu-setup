@@ -32,6 +32,12 @@
         - l2tp
         - ipsec_l2tp
     
+    - role: checkpoint_vpn_client
+      tags:
+        - checkpoint_vpn_client
+        - checkpoint
+        - vpn
+
     - role: jdauphant.atom
       tags: atom
 

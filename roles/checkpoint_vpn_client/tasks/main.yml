@@ -1,0 +1,16 @@
+---
+- set_fact:
+    supported_os: False
+
+- set_fact:
+    supported_os: True
+  when:
+    - ( ansible_distribution == 'Ubuntu' ) and (
+        ansible_distribution_version == '16.04'
+      )
+
+- include: ubuntu.yml
+  when: supported_os
+
+- include: unsupported.yml
+  when: not supported_os
