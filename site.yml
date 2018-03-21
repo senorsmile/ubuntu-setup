@@ -59,8 +59,8 @@
         - swap
         - swappiness
 
-    - role: senorsmile.geerlingguy.docker
-      tags: docker
+    #- role: senorsmile.geerlingguy.docker
+    #  tags: docker
     
     #- role: xmonad
     #  tags: xmonad
@@ -82,3 +82,12 @@
       tags:
         - hipchat
 
+    - role: wtanaka.teamviewer
+      tags:
+        - teamviewer
+
+    #- role: geerlingguy.nodejs
+    - role: senorsmile.nvm
+      tags:
+        - nodejs
+        - npm

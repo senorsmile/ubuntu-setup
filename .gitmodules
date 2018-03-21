@@ -37,3 +37,12 @@
 [submodule "roles/Oefenweb.ansible-hipchat"]
 	path = roles/Oefenweb.ansible-hipchat
 	url = git@github.com:Oefenweb/ansible-hipchat.git
+[submodule "roles/wtanaka.teamviewer"]
+	path = roles/wtanaka.teamviewer
+	url = git@github.com:wtanaka/ansible-role-teamviewer.git
+[submodule "roles/geerlingguy.nodejs"]
+	path = roles/geerlingguy.nodejs
+	url = git@github.com:geerlingguy/ansible-role-nodejs.git
+[submodule "roles/senorsmile.nvm"]
+	path = roles/senorsmile.nvm
+	url = git@github.com:senorsmile/ansible-role-nvm.git
