@@ -90,4 +90,6 @@
     - role: senorsmile.nvm
       tags:
         - nodejs
+        - node
         - npm
+        - nvm
