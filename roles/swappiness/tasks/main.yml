@@ -5,3 +5,4 @@
     value: "{{ swappiness }}"
     state: present
     reload: True
+  when: ( swappiness is defined )
