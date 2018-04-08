@@ -2,6 +2,9 @@
 
 packages=(
 	## to get easy_install
+	software-properties-common 
+	python-software-properties
+
 	python-setuptools 
 	python-dev 
 	gcc
@@ -13,6 +16,10 @@ packages=(
 	vim
 )
 
-sudo apt-get install "${packages[@]}"
+pip_packages=(
+	pipenv
+)
 
-sudo pip install ansible
+sudo apt-get install "${packages[@]}"
+sudo easy_install pip
+sudo pip install "${pip_packages[@]}"

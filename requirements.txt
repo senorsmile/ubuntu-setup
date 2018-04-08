@@ -1,0 +1,6 @@
+## for ansible
+ansible==2.4.4.0
+
+## misc explicit needs
+boto==2.48.0
+netaddr==0.7.19

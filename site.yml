@@ -8,6 +8,7 @@
       tags: 
         - xfce
         - gui
+      when: ( xfce_enabled is defined and xfce_enabled == True )
       
 
     - role: pip
@@ -15,6 +16,7 @@
 
     - role: awesome_screenful
       tags: awesome_screenful
+      when: ( awesome_enabled is defined and awesome_enabled == True )
 
     - role: ripgrep_install
       tags:
@@ -24,6 +26,7 @@
 
     - role: senorsmile.ansible-seafile-client
       tags: seafile
+      when: ( seafile_enabled is defined and seafile_enabled == True )
 
     - role: senorsmile.ipsec_l2tp
       tags:
@@ -31,28 +34,34 @@
         - ipsec
         - l2tp
         - ipsec_l2tp
+      when: ( ipsec_l2tp_enabled is defined and ipsec_l2tp_enabled == True )
     
     - role: checkpoint_vpn_client
       tags:
         - checkpoint_vpn_client
         - checkpoint
         - vpn
+      when: ( checkpoint_vpn_enabled is defined and checkpoint_vpn_enabled == True )
 
     - role: jdauphant.atom
       tags: atom
+      when: ( atom_enabled is defined and atom_enabled == True )
 
     - role: senorsmile.hubisan.virtualbox
       tags:
         - vbox
         - virtualbox
+      when: ( virtualbox_enabled is defined and virtualbox_enabled == True )
 
     - role: senorsmile.jdauphant.vagrant
       vagrant_virtualbox_install: False
       #vagrant_virtualbox_ver: "virtualbox-5.2"
       tags: vagrant
+      when: ( vagrant_enabled is defined and vagrant_enabled == True )
 
     - role: oefenweb.packer_io
       tags: packer
+      when: ( packer_enabled is defined and packer_enabled == True )
 
     - role: swappiness
       tags:
@@ -70,6 +79,7 @@
         - project_libre
         - proj
         - gui
+      when: ( project_libre_enabled is defined and project_libre_enabled == True )
 
     - role: cmprescott.google-chrome
       tags:
@@ -77,14 +87,17 @@
         - google-chrome
         - chrome
         - gui
+      when: ( google_chrome_enabled is defined and google_chrome_enabled == True )
 
     - role: Oefenweb.ansible-hipchat
       tags:
         - hipchat
+      when: ( hipchat_enabled is defined and hipchat_enabled == True )
 
     - role: wtanaka.teamviewer
       tags:
         - teamviewer
+      when: ( teamviewer_enabled is defined and teamviewer_enabled == True )
 
     #- role: geerlingguy.nodejs
     - role: senorsmile.nvm
@@ -93,3 +106,4 @@
         - node
         - npm
         - nvm
+      when: ( nvm_enabled is defined and nvm_enabled == True )

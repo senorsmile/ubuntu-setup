@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+
+[packages]
+ansible = "==2.4.4.0"
+boto = "==2.48.0"
+netaddr = "==0.7.19"
+
+[requires]
+python_version = "2.7"
