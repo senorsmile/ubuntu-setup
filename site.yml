@@ -107,3 +107,9 @@
         - npm
         - nvm
       when: ( nvm_enabled is defined and nvm_enabled == True )
+
+    - role: vpnc
+      tags:
+        - vpn
+        - vpnc
+        - cisco
