@@ -113,3 +113,18 @@
         - vpn
         - vpnc
         - cisco
+      when: ( vpnc_enabled is defined and vpnc_enabled == True )
+      
+
+    - role: wtanaka.slack
+      tags:
+        - slack
+      when: ( slack_enabled is defined and slack_enabled == True )
+
+    - role: andrewrothstein.kubectl
+      tags:
+        - kubectl
+        - k8s
+        - kubernetes
+      when: ( kubectl_enabled is defined and kubectl_enabled == True )
+

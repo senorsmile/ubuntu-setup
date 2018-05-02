@@ -46,3 +46,9 @@
 [submodule "roles/senorsmile.nvm"]
 	path = roles/senorsmile.nvm
 	url = git@github.com:senorsmile/ansible-role-nvm.git
+[submodule "roles/wtanaka.slack"]
+	path = roles/wtanaka.slack
+	url = git@github.com:wtanaka/ansible-role-slack.git
+[submodule "roles/andrewrothstein.kubectl"]
+	path = roles/andrewrothstein.kubectl
+	url = git@github.com:andrewrothstein/ansible-kubectl.git
