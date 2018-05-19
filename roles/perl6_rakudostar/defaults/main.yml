@@ -1,0 +1,8 @@
+---
+rakudo_apt_repo: "deb https://dl.bintray.com/nxadm/rakudo-pkg-debs {{ ansible_distribution_release }} main"
+
+rakudo_pkg_ver:    '2018.01'
+rakudo_pkg_folder: '/usr/local/src'
+rakudo_pkg_name:   "rakudo-star-{{ rakudo_pkg_ver }}"
+rakudo_pkg_tar:    "{{ rakudo_pkg_name }}.tar.gz"
+rakudo_pkg_url:     "https://rakudo.perl6.org/downloads/star"

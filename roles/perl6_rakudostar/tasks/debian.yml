@@ -1,0 +1,58 @@
+---
+- name: apt-get update
+  apt: 
+    update_cache: true 
+    cache_valid_time: 3600
+
+- name: Add rakudo apt key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 379CE192D401AB61
+    state: present
+  register: add_repository_key
+  #ignore_errors: true
+
+- name: Add rakudo repository.
+  apt_repository:
+    repo: "{{ rakudo_apt_repo }}"
+    state: present
+    update_cache: yes
+
+- name: Install rakudo
+  apt:
+    name: rakudo-pkg
+    state: present
+
+- name: Add .perl6/bin to path
+  copy:
+    dest: /etc/profile.d/rakudo-pkg.sh
+    owner: root
+    group: root
+    mode:  '0644'
+    content: |
+      PATH=~/.perl6/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH
+
+#- name: install gdebi
+#  apt: 
+#    name: gdebi
+
+#- name: Check if rakudostar already installed
+#  shell: |
+#    dpkg-query -W rakudo
+#  failed_when: false
+#  changed_when: false
+#
+#- name: Download rakudo star package
+#  get_url:
+#    url:  "{{ rakudo_pkg_url    }}/{{ rakudo_pkg_tar }}"
+#    dest: "{{ rakudo_pkg_folder }}/{{ rakudo_pkg_tar }}"
+#
+#- name: Extract rakudo star package
+#  unarchive:
+#    src:  "{{ rakudo_pkg_folder }}/{{ rakudo_pkg_tar }}"
+#    dest: "{{ rakudo_pkg_folder }}"
+#
+#- name: Configure rakudo package
+#  shell: |
+#    gdebi --non-interactive /tmp/slack-desktop.deb
+#  when: ( check_slack.rc == 1 )

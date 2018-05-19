@@ -1,3 +1,4 @@
+---
 - hosts: ubuntu_desktops
   become: True
   roles:
@@ -127,4 +128,11 @@
         - k8s
         - kubernetes
       when: ( kubectl_enabled is defined and kubectl_enabled == True )
+
+    - role: perl6_rakudostar
+      tags:
+        - perl6
+        - rakudo
+        - rakudostar
+      when: ( perl6_enabled is defined and perl6_enabled == True )
 
