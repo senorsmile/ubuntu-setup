@@ -136,3 +136,10 @@
         - rakudostar
       when: ( perl6_enabled is defined and perl6_enabled == True )
 
+    - role: senorsmile.openconnect-globalprotect
+      tags:
+        - openconnect
+        - globalprotect
+        - palo_alto
+        - vpn
+      when: ( opennconnect_globalprotect is defined and opennconnect_globalprotect == True )

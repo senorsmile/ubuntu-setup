@@ -52,3 +52,6 @@
 [submodule "roles/andrewrothstein.kubectl"]
 	path = roles/andrewrothstein.kubectl
 	url = git@github.com:andrewrothstein/ansible-kubectl.git
+[submodule "roles/senorsmile.openconnect-globalprotect"]
+	path = roles/senorsmile.openconnect-globalprotect
+	url = git@github.com:senorsmile/ansible-role-openconnect-globalprotect.git
