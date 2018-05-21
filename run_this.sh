@@ -15,4 +15,4 @@
 
 export ANSIBLE_CALLBACK_WHITELIST='timer,profile_tasks'
 
-pipenv run ansible-playbook site.yml $@
+pipenv run ansible-playbook site.yml -i ~/inventory/ --diff $@

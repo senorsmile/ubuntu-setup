@@ -9,7 +9,14 @@
         - xfce
         - gui
       when: ( xfce_enabled is defined and xfce_enabled == True )
-      
+
+    - role: geerlingguy.ntp
+      tags:
+        - ntp
+        - geerlingguy
+        - geerlingguy.ntp
+        - timezone
+        - tz
 
     - role: pip
       tags: pip
