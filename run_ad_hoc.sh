@@ -7,5 +7,6 @@
 #
 #---------------------------
 
-export ANSIBLE_BASE_RUN_MODE='ad-hoc'
-./base_run.sh "${@}"
+#export ANSIBLE_BASE_RUN_MODE='ad-hoc'
+#./base_run.sh "${@}"
+pipenv run ansible $@

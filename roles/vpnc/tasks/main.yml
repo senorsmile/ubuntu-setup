@@ -1,0 +1,15 @@
+---
+- name: Apt install vpnc
+  apt:
+    name: vpnc
+    state: installed
+
+- name: Set up config files
+  template:
+    src: vpnc.conf
+    dest: "/etc/vpnc/{{ item.name }}.conf"
+    owner: root
+    group: root
+    mode: '0600'
+  with_items:
+    - "{{ vpnc_confs }}"

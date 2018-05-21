@@ -1,3 +1,4 @@
+---
 - hosts: ubuntu_desktops
   become: True
   roles:
@@ -114,3 +115,38 @@
         - npm
         - nvm
       when: ( nvm_enabled is defined and nvm_enabled == True )
+
+    - role: vpnc
+      tags:
+        - vpn
+        - vpnc
+        - cisco
+      when: ( vpnc_enabled is defined and vpnc_enabled == True )
+      
+
+    - role: wtanaka.slack
+      tags:
+        - slack
+      when: ( slack_enabled is defined and slack_enabled == True )
+
+    - role: andrewrothstein.kubectl
+      tags:
+        - kubectl
+        - k8s
+        - kubernetes
+      when: ( kubectl_enabled is defined and kubectl_enabled == True )
+
+    - role: perl6_rakudostar
+      tags:
+        - perl6
+        - rakudo
+        - rakudostar
+      when: ( perl6_enabled is defined and perl6_enabled == True )
+
+    - role: senorsmile.openconnect-globalprotect
+      tags:
+        - openconnect
+        - globalprotect
+        - palo_alto
+        - vpn
+      when: ( opennconnect_globalprotect is defined and opennconnect_globalprotect == True )
