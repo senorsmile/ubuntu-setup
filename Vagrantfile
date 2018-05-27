@@ -36,12 +36,23 @@ $script = <<-SCRIPT
     wget
     nmap
     tmux
+    git
 
     build-essential
+
+    software-properties-common 
+    
+    python-setuptools 
+    python-pip
+    python-dev 
+    gcc
   )
 
   sudo apt-get update && \
   time sudo apt-get -y install "${apps[@]}"
+
+  # sudo pip install ansible==2.5.3
+  sudo pip install ansible==2.3.3
 SCRIPT
 
 $script_disk2 = <<-SCRIPT
@@ -84,20 +95,26 @@ Vagrant.configure("2") do |config|
       end
     end
 
-    #config.vm.provision "shell", inline: $script
 
     if node[:hostname] == 'desktop1804'
+      config.vm.provision "shell", inline: $script
+
+
       config.vm.synced_folder ".", "/vagrant"
 
-      config.vm.provision "shell", path: "bootstrap.sh"
-      config.vm.provision "shell",
-	      inline: "cd /vagrant; ./run_this.sh"
+      #config.vm.provision "shell", path: "bootstrap.sh"
+      #config.vm.provision "shell",
+      #      inline: "cd /vagrant; ./run_this.sh"
+      #config.vm.provision "shell", path: "run_this.sh"
       
-      #config.vm.provision "ansible_local" do |ansible|
-      #  ansible.playbook = "site.yml"
-      #  ansible.compatibility_mode = "2.0"
-      #  ansible.install = false
-      #end
+      config.vm.provision "ansible_local" do |ansible|
+        ansible.playbook = "site.yml"
+        ansible.compatibility_mode = "2.0"
+        ansible.install = false
+        ansible.groups = {
+          "ubuntu_desktops" => ["desktop1804"], 
+        }
+      end
     end
 
 
