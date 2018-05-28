@@ -113,7 +113,15 @@ Vagrant.configure("2") do |config|
         ansible.install = false
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
+	  "ubuntu_desktops:vars" => {
+            "google_chrome_enabled" => "True", 
+          }
         }
+        #ansible.extra_vars = {
+        #  "atom_enabled" => true, 
+        #  "google_chrome_enabled" => true, 
+        #}
+
       end
     end
 

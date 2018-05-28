@@ -1,48 +1,38 @@
 ---
 - hosts: ubuntu_desktops
   become: True
+  pre_tasks:
+    - debug:
+        var: google_chrome_enabled
   roles:
+    #-------------------------------------------
+    # system mods
+    #-------------------------------------------
     - role: apt
       tags: apt
 
+    - role: swappiness
+      tags:
+        - swap
+        - swappiness
+
+
+    #-------------------------------------------
+    # GUI
+    #-------------------------------------------
     - role: xfce
       tags: 
         - xfce
         - gui
       when: ( xfce_enabled is defined and xfce_enabled == True )
       
-
-    - role: pip
-      tags: pip
-
     - role: awesome_screenful
       tags: awesome_screenful
       when: ( awesome_enabled is defined and awesome_enabled == True )
 
-    - role: ripgrep_install
-      tags:
-        - rg
-        - ripgrep
-        - ripgrep_install
-
     - role: senorsmile.ansible-seafile-client
       tags: seafile
       when: ( seafile_enabled is defined and seafile_enabled == True )
-
-    - role: senorsmile.ipsec_l2tp
-      tags:
-        - vpn
-        - ipsec
-        - l2tp
-        - ipsec_l2tp
-      when: ( ipsec_l2tp_enabled is defined and ipsec_l2tp_enabled == True )
-    
-    - role: checkpoint_vpn_client
-      tags:
-        - checkpoint_vpn_client
-        - checkpoint
-        - vpn
-      when: ( checkpoint_vpn_enabled is defined and checkpoint_vpn_enabled == True )
 
     - role: jdauphant.atom
       tags: atom
@@ -59,21 +49,6 @@
       #vagrant_virtualbox_ver: "virtualbox-5.2"
       tags: vagrant
       when: ( vagrant_enabled is defined and vagrant_enabled == True )
-
-    - role: oefenweb.packer_io
-      tags: packer
-      when: ( packer_enabled is defined and packer_enabled == True )
-
-    - role: swappiness
-      tags:
-        - swap
-        - swappiness
-
-    #- role: senorsmile.geerlingguy.docker
-    #  tags: docker
-    
-    #- role: xmonad
-    #  tags: xmonad
 
     - role: project_libre
       tags:
@@ -100,6 +75,84 @@
         - teamviewer
       when: ( teamviewer_enabled is defined and teamviewer_enabled == True )
 
+    - role: wtanaka.slack
+      tags:
+        - slack
+      when: ( slack_enabled is defined and slack_enabled == True )
+
+
+    #-------------------------------------------
+    # cli tools
+    #-------------------------------------------
+    - role: ripgrep_install
+      tags:
+        - rg
+        - ripgrep
+        - ripgrep_install
+
+    - role: andrewrothstein.kubectl
+      tags:
+        - kubectl
+        - k8s
+        - kubernetes
+      when: ( kubectl_enabled is defined and kubectl_enabled == True )
+
+    #- role: senorsmile.geerlingguy.docker
+    #  tags: docker
+
+
+    #-------------------------------------------
+    # vpn's
+    #-------------------------------------------
+    - role: senorsmile.ipsec_l2tp
+      tags:
+        - vpn
+        - ipsec
+        - l2tp
+        - ipsec_l2tp
+      when: ( ipsec_l2tp_enabled is defined and ipsec_l2tp_enabled == True )
+    
+    - role: checkpoint_vpn_client
+      tags:
+        - checkpoint_vpn_client
+        - checkpoint
+        - vpn
+      when: ( checkpoint_vpn_enabled is defined and checkpoint_vpn_enabled == True )
+
+    - role: senorsmile.openconnect-globalprotect
+      tags:
+        - openconnect
+        - globalprotect
+        - palo_alto
+        - vpn
+      when: ( opennconnect_globalprotect is defined and opennconnect_globalprotect == True )
+
+    - role: vpnc
+      tags:
+        - vpn
+        - vpnc
+        - cisco
+      when: ( vpnc_enabled is defined and vpnc_enabled == True )
+
+
+    #-------------------------------------------
+    # programming
+    #-------------------------------------------
+
+    ###- rust
+
+
+
+    ###- python
+    - role: pip
+      tags: pip
+
+    - role: oefenweb.packer_io
+      tags: packer
+      when: ( packer_enabled is defined and packer_enabled == True )
+
+
+    ###- javascript
     #- role: geerlingguy.nodejs
     - role: senorsmile.nvm
       tags:
@@ -109,26 +162,7 @@
         - nvm
       when: ( nvm_enabled is defined and nvm_enabled == True )
 
-    - role: vpnc
-      tags:
-        - vpn
-        - vpnc
-        - cisco
-      when: ( vpnc_enabled is defined and vpnc_enabled == True )
-      
-
-    - role: wtanaka.slack
-      tags:
-        - slack
-      when: ( slack_enabled is defined and slack_enabled == True )
-
-    - role: andrewrothstein.kubectl
-      tags:
-        - kubectl
-        - k8s
-        - kubernetes
-      when: ( kubectl_enabled is defined and kubectl_enabled == True )
-
+    ###- perl6
     - role: perl6_rakudostar
       tags:
         - perl6
@@ -136,10 +170,3 @@
         - rakudostar
       when: ( perl6_enabled is defined and perl6_enabled == True )
 
-    - role: senorsmile.openconnect-globalprotect
-      tags:
-        - openconnect
-        - globalprotect
-        - palo_alto
-        - vpn
-      when: ( opennconnect_globalprotect is defined and opennconnect_globalprotect == True )
