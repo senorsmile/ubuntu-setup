@@ -25,7 +25,8 @@
         - xfce
         - gui
       when: ( xfce_enabled is defined and xfce_enabled == True )
-      
+
+    # auto manage monitors in awesome      
     - role: awesome_screenful
       tags: awesome_screenful
       when: ( awesome_enabled is defined and awesome_enabled == True )
