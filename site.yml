@@ -140,11 +140,21 @@
     # programming
     #-------------------------------------------
 
+    ####################
     ###- rust
+    ####################
 
 
+    ####################
+    ###- haskell
+    ####################
+    - role: haskell_stack
+      tags: haskell_stack
+      when: ( haskell_stack_enabled is defined and haskell_stack_enabled == True )
 
+    ####################
     ###- python
+    ####################
     - role: pip
       tags: pip
 
@@ -152,8 +162,9 @@
       tags: packer
       when: ( packer_enabled is defined and packer_enabled == True )
 
-
+    ####################
     ###- javascript
+    ####################
     #- role: geerlingguy.nodejs
     - role: senorsmile.nvm
       tags:
@@ -163,7 +174,9 @@
         - nvm
       when: ( nvm_enabled is defined and nvm_enabled == True )
 
+    ####################
     ###- perl6
+    ####################
     - role: perl6_rakudostar
       tags:
         - perl6
