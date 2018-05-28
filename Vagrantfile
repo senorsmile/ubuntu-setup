@@ -10,7 +10,7 @@ nodes = [
     :cpus => 4, 
     :disk2 => {
         :size => '50',
-        #:path => 'C:\Users\ssmiley\Documents\seafile.vdi',
+        # C:\Users\ssmiley\Documents\seafile.vdi
 	:path => File.join(Dir.home, "Documents", "seafile.vdi"),
     },
   },
@@ -114,8 +114,9 @@ Vagrant.configure("2") do |config|
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
 	  "ubuntu_desktops:vars" => {
-            "google_chrome_enabled" => "True", 
-            "haskell_stack_enabled" => "True", 
+            #"google_chrome_enabled" => "True", 
+            #"haskell_stack_enabled" => "True", 
+            "mount_disks" => "True", 
           }
         }
         #ansible.extra_vars = {
