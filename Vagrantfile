@@ -20,10 +20,11 @@ nodes = [
   #  :forward => '5102', 
   #  :ram => 8192, 
   #  :cpus => 4,
-  #  #:disk2 => {
-  #  #    :size => '50',
-  #  #    :path => 'C:\Users\ssmiley\Documents\seafile.vdi',
-  #  #},
+  #  :disk2 => {
+  #      :size => '50',
+  #      # C:\Users\ssmiley\Documents\seafile.vdi
+  #      :path => File.join(Dir.home, "Documents", "seafile.vdi"),
+  #  },
   #},
 ]
 
@@ -90,7 +91,8 @@ Vagrant.configure("2") do |config|
           "--memory", memory.to_s,
         ]
 
-        vb.gui = true
+        #vb.gui = true
+        vb.gui = false
 
       end
     end
@@ -113,16 +115,26 @@ Vagrant.configure("2") do |config|
         ansible.install = false
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
-	  "ubuntu_desktops:vars" => {
-            #"google_chrome_enabled" => "True", 
-            #"haskell_stack_enabled" => "True", 
-            "mount_disks" => "True", 
-          }
+          #"ubuntu_desktops:vars" => {
+          #  #"google_chrome_enabled" => "True", 
+          #  #"haskell_stack_enabled" => "True", 
+          #}
         }
-        #ansible.extra_vars = {
+        ansible.extra_vars = {
         #  "atom_enabled" => true, 
         #  "google_chrome_enabled" => true, 
-        #}
+            "mount_disks" => "True",
+            "mount_disks_config" => {
+              "seafile_disk" => {
+                "disk":        "/dev/sdb",
+                "partition":   "/dev/sdb1",
+                "fstype":      "ext4",
+                "path":        "/mnt/seafile",
+                "user":        "vagrant",
+                "group":       "vagrant",
+              }
+            }
+        }
 
       end
     end
