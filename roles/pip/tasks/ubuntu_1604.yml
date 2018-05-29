@@ -1,0 +1,49 @@
+---
+## apt's python-pip breaks requests
+## never install from repos (especially on debian?)
+
+#- name: Apt install python-pip
+#  apt:
+#    name: python-pip
+#    state: present
+
+- name: Apt install python-setuptools et al. (to get easy_install)
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+    cache_valid_time: 7200
+  with_items:
+    - python-setuptools
+    - python-dev
+    - gcc
+
+- name: easy_install pip
+  easy_install:
+    name: pip
+
+- name: pip upgrade easy_install
+  pip:
+    name: setuptools
+    state: latest
+
+- name: Pip upgrade pip
+  pip:
+    name: pip
+    state: latest
+
+- name: Pip remove desired packages
+  pip:
+    name: "{{ item }}"
+    state: absent
+    extra_args: '--no-cache-dir{% if not pip_become %} --user{% endif %}'
+  with_items: "{{ pip_packages_remove }}"
+  become: "{{ pip_become }}"
+
+- name: Pip install packages
+  pip:
+    name: "{{ item }}"
+    state: present
+    extra_args: '--no-cache-dir{% if not pip_become %} --user{% endif %}'
+  with_items: "{{ pip_packages }}"
+  become: "{{ pip_become }}"

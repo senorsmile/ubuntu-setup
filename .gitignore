@@ -2,3 +2,5 @@
 venv*/
 site.retry
 tmp/
+
+.vagrant/
