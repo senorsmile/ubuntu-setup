@@ -121,8 +121,8 @@ Vagrant.configure("2") do |config|
           #}
         }
         ansible.extra_vars = {
-        #  "atom_enabled" => true, 
-        #  "google_chrome_enabled" => true, 
+            #"atom_enabled" => true, 
+            "google_chrome_enabled" => true, 
             "mount_disks" => "True",
             "mount_disks_config" => {
               "seafile_disk" => {
