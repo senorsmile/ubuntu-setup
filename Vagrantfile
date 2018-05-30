@@ -121,7 +121,7 @@ Vagrant.configure("2") do |config|
             "google_chrome_enabled" => true, 
 	    "seafile_enabled" => true,
 	    "seafile_install_type" => "cli",
-            "mount_disks" => "True",
+            "mount_disks_enabled" => true,
             "mount_disks_config" => {
               "seafile_disk" => {
                 "disk":        "/dev/sdb",

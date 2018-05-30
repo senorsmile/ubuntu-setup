@@ -16,6 +16,11 @@
         - swap
         - swappiness
 
+    - role: mount_disks
+      tags: mount_disks
+      when: ( mount_disks_enabled is defined and mount_disks_enabled == True )
+
+
 
     #-------------------------------------------
     # GUI
