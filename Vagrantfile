@@ -115,14 +115,12 @@ Vagrant.configure("2") do |config|
         ansible.install = false
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
-          #"ubuntu_desktops:vars" => {
-          #  #"google_chrome_enabled" => "True", 
-          #  #"haskell_stack_enabled" => "True", 
-          #}
         }
         ansible.extra_vars = {
             #"atom_enabled" => true, 
             "google_chrome_enabled" => true, 
+	    "seafile_enabled" => true,
+	    "seafile_install_type" => "cli",
             "mount_disks" => "True",
             "mount_disks_config" => {
               "seafile_disk" => {
