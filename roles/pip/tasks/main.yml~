@@ -1,6 +1,0 @@
----
-- include: ubuntu_1604.yml
-  when: ( ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04' )
-
-- include: ubuntu_1804.yml
-  when: ( ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04' )

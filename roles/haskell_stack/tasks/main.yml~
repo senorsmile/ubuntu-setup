@@ -1,5 +1,0 @@
----
-- name: Install haskell stack
-  apt:
-    name: haskell-stack
-    state: present
