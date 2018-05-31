@@ -10,9 +10,8 @@
   parted:
     device: "{{ item.value.disk }}"
     number: "{{ item.value.number | default(1) }}"
-    state:  "{{ item.value.state  | default('present') }}"
+    state:  "{{ item.value.partition_state  | default('present') }}"
   with_dict: "{{ mount_disks_config }}"
-
 
 - name: Format disk
   filesystem:
@@ -20,4 +19,18 @@
     dev:    "{{ item.value.partition }}"
   with_dict: "{{ mount_disks_config }}"
 
-# - name: Mount disk
+- name: Mount disk
+  mount:
+    path:   "{{ item.value.path }}"
+    src:    "{{ item.value.partition }}"
+    fstype: "{{ item.value.fstype }}"
+    state:  "{{ item.value.mount_state | default('mounted') }}"
+  with_dict: "{{ mount_disks_config }}"
+ 
+- name: Permissions on mounted path
+  file:
+    state: "directory"
+    path:  "{{ item.value.path }}"
+    owner: "{{ item.value.user }}"
+    group: "{{ item.value.user }}"
+  with_dict: "{{ mount_disks_config }}"
