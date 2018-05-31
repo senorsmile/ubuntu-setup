@@ -14,6 +14,10 @@
   with_dict: "{{ mount_disks_config }}"
 
 
-# - name: Format disk
+- name: Format disk
+  filesystem:
+    fstype: "{{ item.value.fstype }}"
+    dev:    "{{ item.value.partition }}"
+  with_dict: "{{ mount_disks_config }}"
 
 # - name: Mount disk
