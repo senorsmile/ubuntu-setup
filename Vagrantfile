@@ -10,8 +10,10 @@ nodes = [
     :cpus => 4, 
     :disk2 => {
         :size => '50',
-        # C:\Users\ssmiley\Documents\seafile.vdi
-	:path => File.join(Dir.home, "Documents", "seafile.vdi"),
+        # C:\Users\user\Documents\seafile.vdi
+	# /home/user/Documents/seafile.vdi
+	# ## yes, this works on windows and linux (tested)
+	:path => File.join(Dir.home, "Documents", "seafile.vdi"), 
     },
   },
   #{ :hostname => 'desktop2', 
