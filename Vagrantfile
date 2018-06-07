@@ -1,6 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require 'yaml'
+
 nodes = [
   { :hostname => 'desktop1804',  
     :ip => '192.168.76.101', 
@@ -29,6 +31,14 @@ nodes = [
   #  },
   #},
 ]
+
+inventory_path    = File.join(Dir.home, "inventory", "vagrant.yml")
+if inventory_path.nil?
+  abort("inventory_path not able to find itself")
+end
+puts("inventory path: " + inventory_path.to_s)
+inventory_configs = YAML.load_file(inventory_path)
+
 
 
 $script = <<-SCRIPT
@@ -118,11 +128,22 @@ Vagrant.configure("2") do |config|
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
         }
+	ansible.raw_arguments = [
+          "-v", 
+	]
         ansible.extra_vars = {
-            #"atom_enabled" => true, 
-            "google_chrome_enabled" => true, 
+            #"atom_enabled" => true,
+            "google_chrome_enabled" => true,
+
 	    "seafile_enabled" => true,
 	    "seafile_install_type" => "cli",
+	    "seafile_senorsmile_setup_enabled" => true,
+	    "seafile_user" => "vagrant",
+	    "seafile_url"  => inventory_configs['seafile_url'],
+	    "seafile_email" => inventory_configs['seafile_email'],
+	    "seafile_email_pass" => inventory_configs['seafile_email_pass'],
+	    "seafile_symlink_dirs" => inventory_configs['seafile_symlink_dirs'],
+
             "mount_disks_enabled" => true,
             "mount_disks_config" => {
               "seafile_disk" => {

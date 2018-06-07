@@ -1,0 +1,68 @@
+---
+- name: Get seafile_user home directory
+  shell: >
+    getent passwd {{ seafile_user}} | perl -F: -lane  'print $F[5]'
+  register: seafile_user_dir_cmd
+  changed_when: False
+
+- set_fact:
+    seafile_user_dir: "{{ seafile_user_dir_cmd['stdout'] }}"
+
+- debug:
+    var: seafile_url
+    #var: seafile_user_dir
+
+
+- name: Create seafile settings folder
+  become: True
+  become_user: "{{ seafile_user }}"
+  file:
+    state: directory
+    path: "{{ mount_disks_config['seafile_disk']['path'] }}"
+
+- name: Init seafile cli
+  become: True
+  become_user:  "{{ seafile_user }}"
+  shell: >
+    seaf-cli init -d "{{ mount_disks_config['seafile_disk']['path'] }}"
+  args:
+    creates: "{{ seafile_user_dir }}/.ccnet"
+
+- name: Create seafile cli systemd file
+  template:
+    src: seafile-client.service.j2
+    dest: /etc/systemd/system/seafile-client.service
+
+- name: Enable seafile cli systemd
+  systemd:
+    name: seafile-client
+    state: started
+    enabled: True
+
+- name: Set up seafile downloads
+  become: True
+  become_user: "{{ seafile_user }}"
+  shell: >
+    seaf-cli list | grep "{{ item.id }}" && {
+        echo "OK- Already added"
+    } || {
+        echo "CHANGED- adding id"
+        seaf-cli sync -l '{{ item.id }}' -s  '{{ seafile_url }}' -d '{{ mount_disks_config["seafile_disk"]["path"] }}/{{ item.name }}' -u '{{ seafile_email }}' -p '{{ seafile_email_pass }}' -e '{{ item.pass }}'
+    }
+  with_items: "{{ seafile_symlink_dirs }}"
+  register: setup_seafile_syncs
+  changed_when: ( "CHANGED- adding id" in setup_seafile_syncs.stdout )
+  args:
+    executable: /bin/bash
+
+
+- name: Symlink dirs from seafile
+  become: True
+  become_user: "{{ seafile_user }}"
+  file:
+    state: link
+    src: "{{ mount_disks_config['seafile_disk']['path'] }}/{{ item.name }}"
+    dest: "{{ seafile_user_dir }}/{{ item.name }}"
+  with_items: "{{ seafile_symlink_dirs }}"
+
+- fail:
