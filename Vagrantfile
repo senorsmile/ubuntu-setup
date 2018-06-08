@@ -13,9 +13,9 @@ nodes = [
     :disk2 => {
         :size => '50',
         # C:\Users\user\Documents\seafile.vdi
-	# /home/user/Documents/seafile.vdi
-	# ## yes, this works on windows and linux (tested)
-	:path => File.join(Dir.home, "Documents", "seafile.vdi"), 
+  # /home/user/Documents/seafile.vdi
+  # ## yes, this works on windows and linux (tested)
+    :path => File.join(Dir.home, "Documents", "seafile.vdi"), 
     },
   },
   #{ :hostname => 'desktop2', 
@@ -86,11 +86,11 @@ Vagrant.configure("2") do |config|
       
 
       nodeconfig.vm.provider :virtualbox do |vb|
-	## https://gist.github.com/leifg/4713995
+  ## https://gist.github.com/leifg/4713995
         if node.has_key?(:disk2)
           file_to_disk = node[:disk2][:path]
           unless File.exist?(file_to_disk)
-		  vb.customize ['createhd', '--filename', file_to_disk, '--size', node[:disk2][:size].to_i * 1024] # 50 GB
+      vb.customize ['createhd', '--filename', file_to_disk, '--size', node[:disk2][:size].to_i * 1024] # 50 GB
           end
           #vb.customize ['storageattach', :id, '--storagectl', 'SCSI', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
           vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
@@ -128,21 +128,21 @@ Vagrant.configure("2") do |config|
         ansible.groups = {
           "ubuntu_desktops" => ["desktop1804"], 
         }
-	ansible.raw_arguments = [
+  ansible.raw_arguments = [
           "-v", 
-	]
+  ]
         ansible.extra_vars = {
             #"atom_enabled" => true,
             "google_chrome_enabled" => true,
 
-	    "seafile_enabled" => true,
-	    "seafile_install_type" => "cli",
-	    "seafile_senorsmile_setup_enabled" => true,
-	    "seafile_user" => "vagrant",
-	    "seafile_url"  => inventory_configs['seafile_url'],
-	    "seafile_email" => inventory_configs['seafile_email'],
-	    "seafile_email_pass" => inventory_configs['seafile_email_pass'],
-	    "seafile_symlink_dirs" => inventory_configs['seafile_symlink_dirs'],
+      "seafile_enabled" => true,
+      "seafile_install_type" => "cli",
+      "seafile_senorsmile_setup_enabled" => true,
+      "seafile_user" => "vagrant",
+      "seafile_url"  => inventory_configs['seafile_url'],
+      "seafile_email" => inventory_configs['seafile_email'],
+      "seafile_email_pass" => inventory_configs['seafile_email_pass'],
+      "seafile_symlink_dirs" => inventory_configs['seafile_symlink_dirs'],
 
             "mount_disks_enabled" => true,
             "mount_disks_config" => {
