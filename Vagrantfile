@@ -10,13 +10,13 @@ nodes = [
     :forward => '6103', 
     :ram => 8192, 
     :cpus => 4, 
-    :disk2 => {
-        :size => '50',
-        # C:\Users\user\Documents\seafile.vdi
-  # /home/user/Documents/seafile.vdi
-  # ## yes, this works on windows and linux (tested)
-    :path => File.join(Dir.home, "Documents", "seafile.vdi"), 
-    },
+#    :disk2 => {
+#        :size => '50',
+#        # C:\Users\user\Documents\seafile.vdi
+#        # /home/user/Documents/seafile.vdi
+#        # ## yes, this works on windows and linux (tested)
+#        :path => File.join(Dir.home, "Documents", "seafile.vdi"), 
+#    },
   },
   #{ :hostname => 'desktop2', 
   #  :ip => '192.168.75.102', 
@@ -114,7 +114,7 @@ Vagrant.configure("2") do |config|
       config.vm.provision "shell", inline: $script
 
 
-      config.vm.synced_folder ".", "/vagrant"
+      #config.vm.synced_folder ".", "/vagrant"
 
       #config.vm.provision "shell", path: "bootstrap.sh"
       #config.vm.provision "shell",
@@ -135,26 +135,26 @@ Vagrant.configure("2") do |config|
             #"atom_enabled" => true,
             "google_chrome_enabled" => true,
 
-      "seafile_enabled" => true,
-      "seafile_install_type" => "cli",
-      "seafile_senorsmile_setup_enabled" => true,
-      "seafile_user" => "vagrant",
-      "seafile_url"  => inventory_configs['seafile_url'],
-      "seafile_email" => inventory_configs['seafile_email'],
-      "seafile_email_pass" => inventory_configs['seafile_email_pass'],
-      "seafile_symlink_dirs" => inventory_configs['seafile_symlink_dirs'],
-
-            "mount_disks_enabled" => true,
-            "mount_disks_config" => {
-              "seafile_disk" => {
-                "disk":        "/dev/sdb",
-                "partition":   "/dev/sdb1",
-                "fstype":      "ext4",
-                "path":        "/mnt/seafile",
-                "user":        "vagrant",
-                "group":       "vagrant",
-              }
-            }
+#            "seafile_enabled" => true,
+#            "seafile_install_type" => "cli",
+#            "seafile_senorsmile_setup_enabled" => true,
+#            "seafile_user" => "vagrant",
+#            "seafile_url"  => inventory_configs['seafile_url'],
+#            "seafile_email" => inventory_configs['seafile_email'],
+#            "seafile_email_pass" => inventory_configs['seafile_email_pass'],
+#            "seafile_symlink_dirs" => inventory_configs['seafile_symlink_dirs'],
+#
+#            "mount_disks_enabled" => true,
+#            "mount_disks_config" => {
+#              "seafile_disk" => {
+#                "disk":        "/dev/sdb",
+#                "partition":   "/dev/sdb1",
+#                "fstype":      "ext4",
+#                "path":        "/mnt/seafile",
+#                "user":        "vagrant",
+#                "group":       "vagrant",
+#              }
+#            }
         }
 
       end
